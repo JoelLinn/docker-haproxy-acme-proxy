@@ -1,0 +1,3 @@
+[submodule "haproxy-acme-validation-proxy-plugin"]
+	path = haproxy-acme-validation-proxy-plugin
+	url = https://github.com/JoelLinn/haproxy-acme-validation-proxy-plugin.git
