@@ -1,4 +1,4 @@
-FROM haproxy:1.9
+FROM haproxy:2.1
 
 RUN apt-get update && apt-get install -y lua-http lua-socket && apt-get clean
 
