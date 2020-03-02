@@ -11,3 +11,5 @@ COPY haproxy-acme-validation-proxy-plugin/acme-http01-webroot.lua /usr/local/etc
 #  ^intra\.example\.com$                      exacty intra.example.com
 #  (\.i\.example\.com)$|(\.iana\.org)$        any subdomain under i.example.com or any subdomain under iana.org
 ENV ACME_DOMAINS .*
+# When the acme clients use redirects to serve the challenges, you must set this to TRUE
+ENV ACME_HTTP01_ENABLE_REDIRECTS FALSE
