@@ -1,6 +1,9 @@
 FROM haproxy:2.1
 
-RUN apt-get update && apt-get install -y lua-http lua-socket && apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get update &&\
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        lua-http lua-sec lua-socket && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY haproxy.cfg /usr/local/etc/haproxy/
 
