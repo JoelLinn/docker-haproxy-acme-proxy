@@ -8,13 +8,16 @@ By default, all domains are allowed.
 You should limit this to the domain prefixes used on the intranet to not leak requests.
 The environment variable `ACME_DOMAINS` holds a regex to filter incomming requests with.
 
-asdf | asfsdaf
+`ACME_DOMAINS` | matches
 ---- | -----
 `.*` | any string/domain (default)
 `^intra\.example\.com$` | exacty intra.example.com
 `(\.i\.example\.com)$\|(\.iana\.org)$` | any subdomain under i.example.com or any subdomain under iana.org
 
 Keep in mind that a regex like `iana\.org$` also matches a domain like `whateverisinfrontiana.org`, so better use something like `(\.|^)iana.org$` in that case
+
+If your acme clients down the road redirect (`3xx`) challenge requests, you need to set the environment variable `ACME_HTTP01_ENABLE_REDIRECTS` to `TRUE`.
+Otherwise the proxy will not follow them.
 
 ## Starting
 Change 8888 to the port you want your firewall/gateway to forward requests to
