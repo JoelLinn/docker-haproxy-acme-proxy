@@ -1,9 +1,23 @@
 FROM haproxy:2.1
 
+ENV BUILD_DEPS \
+        build-essential \
+        luarocks \
+        libcurl4-openssl-dev \
+        liblua5.3-dev
+
+# Install an up to date version of Lua-cURL
 RUN DEBIAN_FRONTEND=noninteractive apt-get update &&\
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        lua-http lua-sec lua-socket && \
+        ${BUILD_DEPS} libcurl4  && \
+    echo 'lua_version = "5.3"' >> /etc/luarocks/config.lua && \
+    luarocks install Lua-cURL CURL_INCDIR=/usr/include/x86_64-linux-gnu/ LUA_INCDIR=/usr/include/lua5.3/ && \
+    apt-get purge -y ${BUILD_DEPS} && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
+
+# liblua5.3-dev lua5.3 unzip build-essential
+# luarocks install Lua-cURL CURL_INCDIR=/usr/include/x86_64-linux-gnu/
 
 COPY haproxy.cfg /usr/local/etc/haproxy/
 
