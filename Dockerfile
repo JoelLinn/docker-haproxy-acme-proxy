@@ -27,3 +27,5 @@ COPY haproxy-acme-validation-proxy-plugin/acme-http01-webroot.lua /usr/local/etc
 ENV ACME_DOMAINS .*
 # When the acme clients use redirects to serve the challenges, you must set this to TRUE
 ENV ACME_HTTP01_ENABLE_REDIRECTS FALSE
+# Timeout for internal request in ms
+ENV ACME_TIMEOUT 1000

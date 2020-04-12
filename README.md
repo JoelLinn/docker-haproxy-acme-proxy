@@ -19,6 +19,8 @@ Keep in mind that a regex like `iana\.org$` also matches a domain like `whatever
 If your acme clients down the road redirect (`3xx`) challenge requests, you need to set the environment variable `ACME_HTTP01_ENABLE_REDIRECTS` to `TRUE`.
 Otherwise the proxy will not follow them.
 
+The timeout for the proxied acme token requests can be set in milliseconds using the `ACME_TIMEOUT` variable.
+
 ## Starting
 Change 8888 to the port you want your firewall/gateway to forward requests to
 ```
