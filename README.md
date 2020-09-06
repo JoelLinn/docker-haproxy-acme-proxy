@@ -1,3 +1,7 @@
+# Deprecated
+
+See [JoelLinn/acme-proxy](https://github.com/JoelLinn/acme-proxy) instead.
+
 # HAProxy ACME proxy
 Forward ACME challenge requests to local clients. Clients on the intranet with valid local dns entries can request certs using standard tools.
 
